@@ -6,7 +6,7 @@ pipeline {
         docker { image 'maven:3.8.1-adoptopenjdk-11' }
       }
       steps {
-        sh 'mvn --version'
+        sh 'mvn clean package'
       }
     }
     stage('Front-end') {
@@ -17,5 +17,12 @@ pipeline {
         sh 'node --version'
       }
     }
-  }
+    stage('java version') {
+      stage('hello-world'){
+        agent{
+          sh ' run java '
+        }
+      }
+
+    }
 }
